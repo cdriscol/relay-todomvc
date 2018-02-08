@@ -2,9 +2,11 @@
   "presets": [
     "./tools/envPreset",
     "stage-2",
-    "react"
+    "react",
+    "flow"
   ],
   "plugins": [
-    ["relay", { "schema": "src/data/schema.graphql" }]
+    ["relay", { "schema": "src/data/schema.graphql" }],
+    ["flow-react-proptypes", { "ignoreNodeModules": true }]
   ]
 }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 
@@ -6,13 +6,15 @@ import AddTodoMutation from '../mutations/AddTodoMutation';
 import TodoListFooter from './TodoListFooter';
 import TodoTextInput from './TodoTextInput';
 
-const propTypes = {
-  viewer: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired,
-  relay: PropTypes.object.isRequired,
+import type { TodoApp_viewer } from './__generated__/TodoApp_viewer.graphql';
+
+type Props = {
+	viewer: TodoApp_viewer,
+	children: any,
+	relay: any
 };
 
-class TodoApp extends React.Component {
+class TodoApp extends React.Component<Props> {
   onNewTodoSave = text => {
     const { relay, viewer } = this.props;
 
@@ -55,8 +57,6 @@ class TodoApp extends React.Component {
     );
   }
 }
-
-TodoApp.propTypes = propTypes;
 
 export default createFragmentContainer(
   TodoApp,

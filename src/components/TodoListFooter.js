@@ -1,16 +1,17 @@
+// @flow
 import Link from 'found/lib/Link';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
+import type { TodoListFooter_viewer } from './__generated__/TodoListFooter_viewer.graphql'
 
 import RemoveCompletedTodosMutation from '../mutations/RemoveCompletedTodosMutation';
 
-const propTypes = {
-  viewer: PropTypes.object.isRequired,
-  relay: PropTypes.object.isRequired,
+type Props = {
+  viewer: TodoListFooter_viewer,
+  relay: any,
 };
 
-class TodoListFooter extends React.Component {
+class TodoListFooter extends React.Component<Props> {
   onClearCompletedClick = () => {
     const { relay, viewer } = this.props;
     const { todos } = viewer;
@@ -60,8 +61,6 @@ class TodoListFooter extends React.Component {
     );
   }
 }
-
-TodoListFooter.propTypes = propTypes;
 
 export default createFragmentContainer(
   TodoListFooter,
